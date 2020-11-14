@@ -33,5 +33,13 @@ public class HandPresence : MonoBehaviour
         targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue);
         if (primaryButtonValue)
             Debug.Log("Pressing Primary Button");
+
+        targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
+        if (triggerValue > 0.1f)
+            Debug.Log("Trigger pressed " + triggerValue);
+
+        targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 primary2DAxisValue);
+        if (primary2DAxisValue != Vector2.zero)
+            Debug.Log("Primary Touchpad " + primary2DAxisValue);
     }
 }
